@@ -67,14 +67,38 @@ alias l='ls -CF'
 #
 ###############################################################################
 
+###############################################################################
+# custom functions
+
 function boom {
     kill -9 $@
-    if [ $? = 0 ]; then echo "headshot!" fi 
+    if [ $? = 0 ]; then
+        echo "headshot!";
+    fi 
 }
 
+if [ -f $HOME/.na_functions ]; then
+    source $HOME/.na_functions
+fi
+
+###############################################################################
+# custom paths
+
+# set up a path for a go installation
 export GOROOT="$HOME/go"
-export PATH="$PATH:$GOROOT/bin/"
+if [ ! -d $GOROOT ]; then
+    mkdir -p $GOROOT/bin
+fi
+
+
+PATH="$PATH:$GOROOT/bin"
+if [ -f $HOME/.na_paths ]; then
+    source $HOME/.na_paths
+fi
+export PATH
+
 export EDITOR=vim
 
 # for rbenv
 #eval "$(rbenv init -)"
+
