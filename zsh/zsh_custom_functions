@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# overload ssh to update terminal window after finishing remote session
+function ssh {
+    command ssh "$@";
+    zsh_change_title
+}
+
+# I CAN DANCE ALL DAY
+function boom {
+    kill -9 $@
+    if [ $? = 0 ]; then
+        echo "headshot!";
+    fi 
+}
+

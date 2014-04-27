@@ -38,11 +38,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-###############################################################################
+####################################################
 #
 # copied BASH entries
 #
-###############################################################################
+####################################################
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -61,39 +61,43 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-###############################################################################
+####################################################
 #
 # below are custom additions to default .zshrc
 #
-###############################################################################
+####################################################
 
-###############################################################################
-# custom functions
-
-function boom {
-    kill -9 $@
-    if [ $? = 0 ]; then
-        echo "headshot!";
-    fi 
+function zsh_change_title {
+    print -Pn "\e]2;%~\a"
 }
 
-if [ -f $HOME/.na_functions ]; then
-    source $HOME/.na_functions
+chpwd_functions=(${chpwd_functions[@]} "zsh_change_title")
+
+####################################################
+# custom functions
+
+if [ -f $HOME/.zsh_custom_functions ]; then
+    source $HOME/.zsh_custom_functions
 fi
 
-###############################################################################
+# private functions
+if [ -f $HOME/.zsh_private_functions ]; then
+    source $HOME/.zsh_private_functions
+fi
+
+####################################################
 # custom paths
 
 # set up a path for a go installation
-export GOROOT="$HOME/go"
+export GOROOT="$HOME/golang"
 if [ ! -d $GOROOT ]; then
     mkdir -p $GOROOT/bin
 fi
 
 
 PATH="$PATH:$GOROOT/bin"
-if [ -f $HOME/.na_paths ]; then
-    source $HOME/.na_paths
+if [ -f $HOME/.zsh_custom_paths ]; then
+    source $HOME/.zsh_custom_paths
 fi
 export PATH
 
