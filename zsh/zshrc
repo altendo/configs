@@ -94,6 +94,10 @@ if [ ! -d $GOROOT ]; then
     mkdir -p $GOROOT/bin
 fi
 
+export SCALAROOT="$HOME/scala"
+if [ ! -d $SCALAROOT ]; then
+    mkdir -p $SCALAROOT
+fi
 
 PATH="$PATH:$GOROOT/bin"
 if [ -f $HOME/.zsh_custom_paths ]; then
