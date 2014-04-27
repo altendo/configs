@@ -1,0 +1,2 @@
+# let any user use openvpn without a password
+ALL               ALL = NOPASSWD:/usr/sbin/openvpn
