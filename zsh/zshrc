@@ -108,5 +108,4 @@ export PATH
 export EDITOR=vim
 
 # for rbenv
-#eval "$(rbenv init -)"
-
+eval "$(rbenv init -)"
