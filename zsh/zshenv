@@ -1,0 +1,9 @@
+# golang specific paths
+export GOROOT="/usr/local/golang"
+export GOPATH="$HOME/Repos/golang"
+
+#rbenv for switching ruby versions
+RBENV_PATH="$HOME/.rbenv/bin"
+
+
+PATH="$PATH:$RBENV_PATH:$GOROOT/bin:$GOPATH"
