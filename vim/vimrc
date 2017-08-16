@@ -2,7 +2,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set noeol
+"set noeol
 
 " the following is to prevent vim from automatically inserting an end of line when a file is written
 " stolen from http://vim.wikia.com/wiki/Preserve_missing_end-of-line_at_end_of_text_files
