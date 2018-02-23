@@ -4,17 +4,17 @@ autoload -Uz promptinit
 promptinit
 prompt adam1
 
+# History options
+
+HISTSIZE=3000
+SAVEHIST=3000
+HISTFILE=~/.zsh_history
 setopt histignorealldups
-# disable shared history
+setopt inc_append_history
 #setopt sharehistory
 
 # emacs bindings
 bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
