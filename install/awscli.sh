@@ -1,10 +1,10 @@
 #!/bin/bash
 
 AWS_DIR='~/.aws'
-INSTALL_DIR='awscli-bundle'
 PATH_BIN='/usr/local/bin/aws'
 PATH_INSTALL='/usr/local/aws'
 ZIP='awscli-bundle.zip'
+ZIP_DIR='awscli-bundle'
 
 if [ ! -d "$AWS_DIR" ]; then
     mkdir $AWS_DIR
@@ -20,9 +20,12 @@ fi
 
 unzip $ZIP
 
-if [ ! -f "$INSTALL_DIR" ]; then
+if [ ! -f "$ZIP_DIR" ]; then
     echo "ERROR unable to unzip $ZIP"
 fi
 
-sudo ./$INSTALL_DIR/install -i $PATH_INSTALL -b $PATH_BIN
+sudo ./$ZIP_DIR/install -i $PATH_INSTALL -b $PATH_BIN
 
+if [ "$?" -eq "0" ]; then
+    rm -rf $ZIP $ZIP_DIR cli
+fi
