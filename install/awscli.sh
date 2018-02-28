@@ -10,22 +10,20 @@ if [ ! -d "$AWS_DIR" ]; then
     mkdir $AWS_DIR
 fi
 
-cd $AWS_DIR
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "$AWS_DIR/$ZIP"
 
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o $ZIP
-
-if [ ! -f "$ZIP" ]; then
+if [ ! -f "$AWS_DIR/$ZIP" ]; then
     echo "ERROR unable to download $ZIP"
 fi
 
-unzip $ZIP
+unzip "$AWS_DIR/$ZIP" -d "$AWS_DIR"
 
-if [ ! -f "$ZIP_DIR" ]; then
+if [ ! -d "$AWS_DIR/$ZIP_DIR" ]; then
     echo "ERROR unable to unzip $ZIP"
 fi
 
-sudo ./$ZIP_DIR/install -i $PATH_INSTALL -b $PATH_BIN
+sudo "$AWS_DIR/$ZIP_DIR/install" -i $PATH_INSTALL -b $PATH_BIN
 
 if [ "$?" -eq "0" ]; then
-    rm -rf $ZIP $ZIP_DIR cli
+    rm -rf "$AWS_DIR/$ZIP" "$AWS_DIR/$ZIP_DIR" "$AWS_DIR/cli"
 fi
