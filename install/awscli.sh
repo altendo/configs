@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AWS_DIR='~/.aws'
+AWS_DIR="$HOME/.aws/"
 PATH_BIN='/usr/local/bin/aws'
 PATH_INSTALL='/usr/local/aws'
 ZIP='awscli-bundle.zip'
