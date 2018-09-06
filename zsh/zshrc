@@ -10,6 +10,7 @@ HISTSIZE=3000
 SAVEHIST=3000
 HISTFILE=~/.zsh_history
 setopt histignorealldups
+setopt histignorespace
 setopt inc_append_history
 #setopt sharehistory
 
